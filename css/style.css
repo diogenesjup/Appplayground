@@ -1,0 +1,26 @@
+/*
+	DIOGENES JUNIOR
+	CONTATO@DIOGENESJUNIOR.COM.BR
+	
+*/
+
+/*---------------------------------
+	IMPORTS E CONSULTAS
+-----------------------------------*/
+
+a[href^="#"]{
+  color: #84E;
+}
+
+/*---------------------------------
+	ESTILOS
+-----------------------------------*/
+html,body{
+    height: 100%;
+}
+body{
+	overflow-x: hidden;
+    background:#fff;
+}
+
+
