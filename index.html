@@ -65,34 +65,21 @@
             }
 
 
-            function localLatDir(){
-
-                alert("Iniciamos");
-
-   if( navigator.geolocation )
-        {
-           // Call getCurrentPosition with success and failure callbacks
-           navigator.geolocation.getCurrentPosition( success2, fail2 );
-        }
-        else
-        {
-           alert("Esse dispositivo não tem GPS");
+document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            navigator.geolocation.getCurrentPosition(onSuccess, onError);
         }
 
-}
-function success2(position)
-     {
-         var cordenadas = "";  
-         cordenadas = position.coords.longitude;
-         cordenadas = cordenadas+"###";
-         cordenadas = cordenadas + position.coords.latitude;
-         $("#resultado").append(cordenadas);
-     }
+    function onSuccess(position) {
+            var lat = pos.coords.latitude;
+            var lng = pos.coords.longitude;
+            alert("lat : " + lat + " lng : " + lng);
 
-function fail2()
-     {
-        alert("Esse dispositivo não tem GPS");
-     }  
+        }
+
+    function onError(error) {
+            alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+        }
 
     </script>
     <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
