@@ -43,7 +43,7 @@
 <body>
    
 
-    <h3>App em execução</h3>
+    <h3 onclick="localLatDir();">App em execução</h3>
 
     <div id="resultado"></div>
 
@@ -63,6 +63,36 @@
             }else{
                 $("#resultado").html("Ótimo! Temos dados na persistencia");
             }
+
+
+            function localLatDir(){
+
+                alert("Iniciamos");
+
+   if( navigator.geolocation )
+        {
+           // Call getCurrentPosition with success and failure callbacks
+           navigator.geolocation.getCurrentPosition( success2, fail2 );
+        }
+        else
+        {
+           alert("Esse dispositivo não tem GPS");
+        }
+
+}
+function success2(position)
+     {
+         var cordenadas = "";  
+         cordenadas = position.coords.longitude;
+         cordenadas = cordenadas+"###";
+         cordenadas = cordenadas + position.coords.latitude;
+         $("#resultado").append(cordenadas);
+     }
+
+function fail2()
+     {
+        alert("Esse dispositivo não tem GPS");
+     }  
 
     </script>
     <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
