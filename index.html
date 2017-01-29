@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
+
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>App Playground V 1.3</title>
+
+    <title>Teste aplicativo V 1.45</title>
+
     <!-- Path to Framework7 Library CSS-->
     <link rel="stylesheet" href="dist/css/framework7.ios.min.css">
     <!-- Path to your custom app styles-->
@@ -16,6 +19,20 @@
         height: 100% !important;
       }
     </style>
+
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="dist/js/framework7.min.js"></script>
+    
+
+    <!-- CORDOVA -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript"  src="js/geolocation.js"></script>
+
+
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+
 
   </head>
   <body>
@@ -46,22 +63,21 @@
           <div data-page="index-1" class="page">
             <!-- Scrollable page content-->
             <div class="page-content">
-              <div class="content-block-title">App Playground V 1.3</div>
+              <div class="content-block-title">App de teste V 1.45</div>
               <div class="content-block">
-                <p>This is an example of tab bar application layout. The main point of such tabbed layout is that each tab contains independent view with its own routing and navigation.</p>
+                <p>Apenas um exemplo</p>
 
                 <span id="dfLongitude">0</span> & <span id="dfLatitude">0</span><br><br>
                 <span id="timestamp">0</span><br><br>
-                <span id="log"></span>
-                
-                <p>Each tab/view may have different layout, different navbar type (dynamic, fixed or static) or without navbar like this tab.</p>
-                <p>And of course, your favorite panels are still here: <a href="#" class="open-panel">left</a> and  <a href="#" data-panel="right" class="open-panel">right</a></p>
+                               
+                <p>Aqui o texto de apresentação</p>
+                <p>onde vamos colocar navegação: <a href="#" class="open-panel">esquerda</a> e  <a href="#" data-panel="right" class="open-panel">direita</a></p>
                 
                 <p>
                  <button id="getCurrentLocation">obter as coordenadas atuais</button>
                 </p>
 
-                <p>Icons and their labels in tab bar below are just for example and don't related to their content.</p>
+                <p>aqui uma outra frase</p>
 
               </div>
             </div>
@@ -73,27 +89,27 @@
         <!-- We can make with view with navigation, let's add Top Navbar-->
         <div class="navbar">
           <div class="navbar-inner">
-            <div class="center sliding">Second View</div>
+            <div class="center sliding">Segunda tela</div>
           </div>
         </div>
         <div class="pages navbar-through">
           <div data-page="index-2" class="page">
             <div class="page-content">
               <div class="content-block">
-                <p>This is a second view. Lets, for example, have here some internal pages with navbar navigation</p>
+                <p>Aqui um menu de navegação de contexto</p>
               </div>
               <div class="list-block">
                 <ul>
                   <li><a href="about.html" class="item-link">
                       <div class="item-content">
                         <div class="item-inner"> 
-                          <div class="item-title">About Us</div>
+                          <div class="item-title">Sobre</div>
                         </div>
                       </div></a></li>
                   <li><a href="services.html" class="item-link">
                       <div class="item-content"> 
                         <div class="item-inner">
-                          <div class="item-title">Services</div>
+                          <div class="item-title">Serviços</div>
                         </div>
                       </div></a></li>
                 </ul>
@@ -247,43 +263,9 @@
       </div>
       <!-- Bottom Tabbar-->
       <div class="toolbar tabbar tabbar-labels">
-        <div class="toolbar-inner"><a href="#view-1" class="tab-link active"> <i class="icon tabbar-demo-icon-1"></i><span class="tabbar-label">Information</span></a><a href="#view-2" class="tab-link"><i class="icon tabbar-demo-icon-2"></i><span class="tabbar-label">Inbox</span></a><a href="#view-3" class="tab-link"> <i class="icon tabbar-demo-icon-3"><span class="badge bg-red">2</span></i><span class="tabbar-label">Upload</span></a><a href="#view-4" class="tab-link"> <i class="icon tabbar-demo-icon-4"></i><span class="tabbar-label">Photos</span></a></div>
+        <div class="toolbar-inner"><a href="#view-1" class="tab-link active"> <i class="icon tabbar-demo-icon-1"></i><span class="tabbar-label">Informação</span></a><a href="#view-2" class="tab-link"><i class="icon tabbar-demo-icon-2"></i><span class="tabbar-label">Tela 2</span></a><a href="#view-3" class="tab-link"> <i class="icon tabbar-demo-icon-3"><span class="badge bg-red">2</span></i><span class="tabbar-label">Upload</span></a><a href="#view-4" class="tab-link"> <i class="icon tabbar-demo-icon-4"></i><span class="tabbar-label">Câmera</span></a></div>
       </div>
     </div>
-    <!-- Path to Framework7 Library JS-->
-    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-    <script type="text/javascript" src="dist/js/framework7.min.js"></script>
     
-
-    <!-- CORDOVA -->
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript"  src="js/geolocation.js"></script>
-
-
-    <!-- Path to your app js-->
-    <script type="text/javascript" src="js/my-app.js"></script>
-
-    <!-- MUDAR OPTOUT PARA HTML -->
-    <script type="text/javascript">
-      (function () {
-            if (!console) {
-                console = {};
-            }
-            var old = console.log;
-            var logger = document.getElementById('log');
-            console.log = function (message) {
-                if (typeof message == 'object') {
-                    logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : String(message)) + '<br />';
-                } else {
-                    logger.innerHTML += message + '<br />';
-                }
-            }
-        })();
-    </script>
-
-    
-
-
-
       </body>
 </html>

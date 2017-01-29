@@ -38,6 +38,7 @@ document.addEventListener("deviceready", function() {
     }
 
     $(document).on("click", "#getCurrentLocation", function() {
+        alert("Você clicou no botão");
         $.mobile.loading("show");
         navigator.geolocation.getCurrentPosition(onSuccess, onError, getOptions());
     });
