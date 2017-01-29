@@ -1,15 +1,15 @@
 document.addEventListener("deviceready", function() {
 
     var onSuccess = function(position) {
-        $("#dfLatitude").val(position.coords.latitude);
-        $("#dfLongitude").val(position.coords.longitude);
+        $("#dfLatitude").html(position.coords.latitude);
+        $("#dfLongitude").html(position.coords.longitude);
         
         /*$("#altitude").val(position.coords.altitude);
         $("#accuracy").val(position.coords.accuracy);
         $("#altitudeAccuracy").val(position.coords.altitudeAccuracy);
         $("#heading").val(position.coords.heading);
         $("#speed").val(position.coords.speed); */
-        $("#timestamp").val(position.timestamp);
+        $("#timestamp").html(position.timestamp);
 
         //$.mobile.loading("hide");
     };
