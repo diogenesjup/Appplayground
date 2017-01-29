@@ -14,8 +14,8 @@ document.addEventListener("deviceready", function() {
     };
 
     function onError(error) {
-        alert("Code: "    + error.code    + "\n" +
-            "Message: " + error.message + "\n");
+        alert("Código: "    + error.code    + "\n" +
+            "Mensagem: " + error.message + "\n");
 
         $("#getCurrentLocation").button("enable");
         $("#watchGeolocation").button("enable");
@@ -42,21 +42,5 @@ document.addEventListener("deviceready", function() {
     });
 
     var watchId;
-
-    $(document).on("click", "#watchGeolocation", function() {
-        $("#getCurrentLocation").button("disable");
-        $("#watchGeolocation").button("disable");
-        $("#stopWatchingGeolocation").button("enable");
-
-        watchId = navigator.geolocation.watchPosition(onSuccess, onError, getOptions());
-    });
-
-    $(document).on("click", "#stopWatchingGeolocation", function() {
-        $("#getCurrentLocation").button("enable");
-        $("#watchGeolocation").button("enable");
-        $("#stopWatchingGeolocation").button("disable");
-
-        navigator.geolocation.clearWatch(watchId);
-    });
 
 }, false);
