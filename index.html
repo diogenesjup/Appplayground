@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>My App</title>
+    <title>App Playground V1</title>
     <!-- Path to Framework7 Library CSS-->
     <link rel="stylesheet" href="dist/css/framework7.ios.min.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
+
+    <style type="text/css">
+      html,body{
+        height: 100% !important;
+      }
+    </style>
+
   </head>
   <body>
     <!-- Status bar overlay for fullscreen mode-->
@@ -39,7 +46,7 @@
           <div data-page="index-1" class="page">
             <!-- Scrollable page content-->
             <div class="page-content">
-              <div class="content-block-title">Welcome</div>
+              <div class="content-block-title">App Playground V1</div>
               <div class="content-block">
                 <p>This is an example of tab bar application layout. The main point of such tabbed layout is that each tab contains independent view with its own routing and navigation.</p>
                 <p>Each tab/view may have different layout, different navbar type (dynamic, fixed or static) or without navbar like this tab.</p>
@@ -233,6 +240,56 @@
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="dist/js/framework7.min.js"></script>
     <!-- Path to your app js-->
+    <script type="text/javascript" src="cordova.js"></script>
+
     <script type="text/javascript" src="js/my-app.js"></script>
+
+    <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/accelerometer.js"></script>
+        <script type="text/javascript" src="js/camera.js"></script>
+        <script type="text/javascript" src="js/compass.js"></script>
+        <script type="text/javascript" src="js/contacts.js"></script>
+        <script type="text/javascript" src="js/device.js"></script>
+        <script type="text/javascript" src="js/dialog.js"></script>
+        <script type="text/javascript" src="js/geolocation.js"></script>
+        <script type="text/javascript" src="js/in-app-browser.js"></script>
+        <script type="text/javascript" src="js/insomnia.js"></script>
+        <script type="text/javascript" src="js/keyboard.js"></script>
+        <script type="text/javascript" src="js/local-notification.js"></script>
+        <script type="text/javascript" src="js/network-information.js"></script>
+        <script type="text/javascript" src="js/screen-orientation.js"></script>
+        <script type="text/javascript" src="js/vibration.js"></script>
+
+        <script type="text/javascript">
+          
+          document.addEventListener("deviceready", function() {
+
+            var onSuccess = function(position) {
+                $("#latitude").val(position.coords.latitude);
+                $("#longitude").val(position.coords.longitude);
+                $("#altitude").val(position.coords.altitude);
+                $("#accuracy").val(position.coords.accuracy);
+                $("#altitudeAccuracy").val(position.coords.altitudeAccuracy);
+                $("#heading").val(position.coords.heading);
+                $("#speed").val(position.coords.speed);
+                $("#timestamp").val(position.timestamp);
+
+                $.mobile.loading("hide");
+                alert($("#latitude").val(position.coords.latitude));
+            };
+
+            function onError(error) {
+                alert("Code: "    + error.code    + "\n" +
+                    "Message: " + error.message + "\n");
+
+                $("#getCurrentLocation").button("enable");
+                $("#watchGeolocation").button("enable");
+                $("#stopWatchingGeolocation").button("disable");
+
+                $.mobile.loading("hide");
+            }
+        }, false);
+
+        </script>
   </body>
 </html>
