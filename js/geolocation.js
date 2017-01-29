@@ -11,7 +11,7 @@ document.addEventListener("deviceready", function() {
         $("#speed").val(position.coords.speed); */
         $("#timestamp").val(position.timestamp);
 
-        $.mobile.loading("hide");
+        //$.mobile.loading("hide");
     };
 
     function onError(error) {
@@ -22,27 +22,24 @@ document.addEventListener("deviceready", function() {
         $("#watchGeolocation").button("enable");
         $("#stopWatchingGeolocation").button("disable");
 
-        $.mobile.loading("hide");
+        //$.mobile.loading("hide");
     }
 
     function getOptions() {
-        var enableHighAccuracy = ($("#highAccuracy").val() === "true");
-        var maximumAge = parseInt($("#maximumAge").val());
-        var timeout = parseInt($("#geolocationTimeout").val());
+        
+        alert("Navigator foi executado com sucesso");
 
-        return {
-            maximumAge: maximumAge,
-            timeout: timeout,
-            enableHighAccuracy: enableHighAccuracy
-        }
     }
 
     $(document).on("click", "#getCurrentLocation", function() {
+
         alert("Você clicou no botão");
-        $.mobile.loading("show");
+        
+        //$.mobile.loading("show");
+        
         navigator.geolocation.getCurrentPosition(onSuccess, onError, getOptions());
     });
 
-    var watchId;
+    //var watchId;
 
 }, false);
