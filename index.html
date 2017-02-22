@@ -63,6 +63,7 @@
     <div class="container">
        <button id="abrirDiv" class="btn btn-primary" onclick="$('.div').removeClass('slideOutRight'); $('.div').addClass('slideInRight'); $('.div').fadeIn('500');">abrir div</button>
        <p>&nbsp;</p>
+       <button class="btn btn-primary" onclick="onDeviceReady();">testar coordenadas</button>
 
        <input id="showNotification1" type="button" value="teste de notificação" />
 
@@ -90,7 +91,7 @@
             }
 
 
-document.addEventListener("deviceready", onDeviceReady, false);
+
         function onDeviceReady() {
             navigator.geolocation.getCurrentPosition(onSuccess, onError);
         }
@@ -107,26 +108,26 @@ document.addEventListener("deviceready", onDeviceReady, false);
         }
 
 
-document.addEventListener("deviceready", function () {
 
-    var ID_NOTIFICATION_1 = 1;
-    var ID_NOTIFICATION_2 = 2;
 
-    $(document).on("click", "#showNotification1", function() {
-        cordova.plugins.notification.local.schedule({
-            id: ID_NOTIFICATION_1,
-            title: "Olá Diogenes",
-            text: "Se você está vendo isso, você fez uma notificação no aplicativo",
-            led: "FF0000",
-            badge: 1
-        });
-    });
+            var ID_NOTIFICATION_1 = 1;
+            var ID_NOTIFICATION_2 = 2;
 
- cordova.plugins.notification.local.on("click", function(notification) {
-        alert("Obrigado por ter clicado em mim! (Id: " + notification.id + ")");
-    });
+            $(document).on("click", "#showNotification1", function() {
+                cordova.plugins.notification.local.schedule({
+                    id: ID_NOTIFICATION_1,
+                    title: "Olá Diogenes",
+                    text: "Se você está vendo isso, você fez uma notificação no aplicativo",
+                    led: "FF0000",
+                    badge: 1
+                });
+            });
 
-}, false);    
+         cordova.plugins.notification.local.on("click", function(notification) {
+                alert("Obrigado por ter clicado em mim! (Id: " + notification.id + ")");
+            });
+
+   
 
 
     </script>
