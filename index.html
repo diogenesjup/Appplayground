@@ -1,92 +1,139 @@
+<!--
+#
+# DIOGENES OLIVEIRA DOS SANTOS JUNIOR
+# WWW.DIOGENESJUNIOR.COM.BR
+# CONTATO@DIOGENESJUNIOR.COM.BR
+#
+-->
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+<html lang="pt-br"><head>
+<title>App Playground</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#053d4e">
 
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <title>CPM Mercantil</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="all" />
 
-    <!-- Path to Framework7 Library CSS-->
-    <link rel="stylesheet" href="dist/css/framework7.ios.min.css">
-    <!-- Path to your custom app styles-->
-    <link rel="stylesheet" href="css/my-app.css">
+<link rel="stylesheet" type="text/css" href="css/style.css" />
 
-    <style type="text/css">
-      html,body{
-        height: 100% !important;
-      }
-    </style>
+<link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css">    
+<!-- ICONES -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
-    
-  </head>
+
+<!-- ANIMATE -->
+<link rel="stylesheet" type="text/css" href="css/animate.css">
+
+<style type="text/css">
+    body{
+        padding: 50px;
+        text-align: center;
+        font-family: Calibri;
+    }
+
+.wow {
+   visibility: hidden;
+}
+
+.div{
+    position: absolute;
+    display: none;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #efefef;
+    padding: 30px;
+    z-index: 9999;
+}
+</style>
+
+</head>
 <body>
-  
+   
 
-    <div class="page-content">
-      <div class="content-block" style="text-align: center;">
-        
+    <h3 onclick="localLatDir();">App em execução</h3>
 
-        <p style="text-center;"><img src="images/logo.jpg"></p>
-        <p style="text-center;"><button href="#" class="btn-default open-login-screen">Entrar na aplicação</button></p>
-      
-      </div>
-    </div>
-  
-
-  <div class="login-screen">
-    <div class="view">
-      <div class="page">
-        <div class="page-content login-screen-content">
-          <div class="login-screen-title">CTM consultoria Pública</div>
-          
-            <div class="list-block">
-              <ul>
-                <li class="item-content">
-                  <div class="item-inner">
-                    <div class="item-title label">Login</div>
-                    <div class="item-input">
-                      <input type="text" name="username" id="loginInput" placeholder="Seu login">
-                    </div>
-                  </div>
-                </li>
-                <li class="item-content">
-                  <div class="item-inner">
-                    <div class="item-title label">Senha</div>
-                    <div class="item-input">
-                      <input type="password" name="password" id="senhaInput" placeholder="Sua senha">
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="list-block">
-              <ul>
-                <li><button id="login" class="btn-primary item-link list-button">Login</button></li>
-              </ul>
-              <div class="list-block-label">
-                <p>Apenas colaboradores CTM podem ter acesso a essa aplicação</p>
-                <p><a href="#" class="close-login-screen">Fechar tela de login</a></p>
-              </div>
-            </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-    <!-- Path to Framework7 Library JS-->
-    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-    <script type="text/javascript" src="dist/js/framework7.min.js"></script>
+    <div id="resultado"></div>
     
-    <!-- Path to your app js-->
-    <script type="text/javascript" src="js/my-app.js"></script>
+    <p>&nbsp;</p>
+    
+    <div class="container">
+       <button id="abrirDiv" class="btn btn-primary" onclick="$('.div').removeClass('slideOutRight'); $('.div').addClass('slideInRight'); $('.div').fadeIn('500');">abrir div</button>
+       <p>&nbsp;</p>
+
+       <input id="showNotification1" type="button" value="teste de notificação" />
+
+    </div>
+   
+   <div class="div wow slideInRight" data-wow-duration="1.2s">
+       <h2>Eu sou a div que pousou na sua sopa</h2>
+       <button class="btn btn-danger" onclick="$('.div').removeClass('slideInRight'); $('.div').addClass('slideOutRight');">me feche</button>
+   </div>
+
+
+    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/sweetalert2.min.js"></script> 
+    <script type="text/javascript">          
+               
+            var sessao = localStorage.getItem("sessao");
+
+            if(sessao!=9){
+                $("#resultado").html("Nenhum dado na persistencia");
+                localStorage.setItem("sessao", 9);
+            }else{
+                $("#resultado").html("Ótimo! Temos dados na persistencia");
+            }
 
 
-      </body>
+document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        }
+
+    function onSuccess(position) {
+            var lat = pos.coords.latitude;
+            var lng = pos.coords.longitude;
+            alert("lat : " + lat + " lng : " + lng);
+
+        }
+
+    function onError(error) {
+            alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+        }
+
+
+document.addEventListener("deviceready", function () {
+
+    var ID_NOTIFICATION_1 = 1;
+    var ID_NOTIFICATION_2 = 2;
+
+    $(document).on("click", "#showNotification1", function() {
+        cordova.plugins.notification.local.schedule({
+            id: ID_NOTIFICATION_1,
+            title: "Olá Diogenes",
+            text: "Se você está vendo isso, você fez uma notificação no aplicativo",
+            led: "FF0000",
+            badge: 1
+        });
+    });
+
+ cordova.plugins.notification.local.on("click", function(notification) {
+        alert("Obrigado por ter clicado em mim! (Id: " + notification.id + ")");
+    });
+
+}, false);    
+
+
+    </script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <script>
+         new WOW().init();
+    </script>
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</body>
 </html>
