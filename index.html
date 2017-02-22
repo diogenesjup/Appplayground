@@ -62,10 +62,19 @@
     
     <div class="container">
        <button id="abrirDiv" class="btn btn-primary" onclick="$('.div').removeClass('slideOutRight'); $('.div').addClass('slideInRight'); $('.div').fadeIn('500');">abrir div</button>
-       <p>&nbsp;</p>
-       <button class="btn btn-primary" onclick="onDeviceReady();">testar coordenadas</button>
 
-       <input id="showNotification1" type="button" value="teste de notificação" />
+       <p>&nbsp;</p>
+       <button class="btn btn-primary" onclick="localFrente();">testar coordenadas</button>
+       <p>&nbsp;</p>
+
+
+       <p>&nbsp;</p>
+       <button class="btn btn-primary" onclick="testeNot();">testar notificação</button>
+       <p>&nbsp;</p>
+
+       
+
+       
 
     </div>
    
@@ -78,7 +87,6 @@
     <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
-    <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">          
                
             var sessao = localStorage.getItem("sessao");
@@ -91,29 +99,40 @@
             }
 
 
+function localFrente(){
 
-        function onDeviceReady() {
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+   if( navigator.geolocation )
+        {
+           // Call getCurrentPosition with success and failure callbacks
+           navigator.geolocation.getCurrentPosition( success, fail );
+        }
+        else
+        {
+           alert("Esse dispositivo não tem GPS");
         }
 
-    function onSuccess(position) {
-            var lat = pos.coords.latitude;
-            var lng = pos.coords.longitude;
-            alert("lat : " + lat + " lng : " + lng);
+}
+function success(position)
+     {
+         var cordenadas = "";  
+         cordenadas = position.coords.longitude;
+         cordenadas = cordenadas+", ";
+         cordenadas = cordenadas + position.coords.latitude;
+         $("#resultado").html(cordenadas);
+     }
 
-        }
-
-    function onError(error) {
-            alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
-        }
-
+function fail()
+     {
+        alert("Esse dispositivo não tem GPS");
+     }
 
 
+
+function testeNot(){
 
             var ID_NOTIFICATION_1 = 1;
-            var ID_NOTIFICATION_2 = 2;
 
-            $(document).on("click", "#showNotification1", function() {
+           
                 cordova.plugins.notification.local.schedule({
                     id: ID_NOTIFICATION_1,
                     title: "Olá Diogenes",
@@ -121,13 +140,13 @@
                     led: "FF0000",
                     badge: 1
                 });
-            });
+           
 
          cordova.plugins.notification.local.on("click", function(notification) {
                 alert("Obrigado por ter clicado em mim! (Id: " + notification.id + ")");
             });
 
-   
+}
 
 
     </script>
